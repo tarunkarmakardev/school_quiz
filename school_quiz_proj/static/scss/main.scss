@@ -1,0 +1,88 @@
+$colors: (
+    alpha: #000000,
+    beta: #14213D,
+    gamma: #FCA311,
+    alpha-light: #E5E5E5,
+    beta-light: #FFFFFF
+);
+
+
+// color classes
+@each $name, $value in $colors {
+
+    .bg-#{$name}{
+        background-color: $value;
+    }
+    .text-#{$name}{
+        color: $value;
+    }
+
+    .btn-#{$name} {
+        background-color: $value;
+        border-color: $value;
+        transform: scale(1);
+        transition: transform 0.2s ease-out;
+        &:hover{
+            background-color: $value;
+            border-color: $value;
+            opacity: 0.9;
+            transform: scale(0.95);
+        }
+    }
+    
+}
+
+
+
+// Styles: 
+
+.quizzes{
+    .content{
+        margin: 2rem 0;
+    }
+
+    .quiz-cards{
+        padding: 4rem 0;
+
+        .card{
+            padding: 1.5rem;
+        }
+    }
+}
+
+.quiz-question {
+    .container{
+        width: 60%;
+    }
+    #{&}-content{
+        .correct-answer{
+            display: inline-block;
+            text-align: center;
+            width: 25%;
+            color: map-get($map: $colors, $key: gamma );
+            padding: 0rem;
+            border: 0.5px map-get($map: $colors, $key: gamma ) solid;
+        }
+
+        margin:4rem 0;
+        height: auto;
+
+        button.btn{
+            margin:4rem 0 0 0;
+        }
+ 
+    }
+}
+
+.field-error{
+    color: map-get($map: $colors, $key: gamma );
+    padding: 1rem;
+    border: 0.5px map-get($map: $colors, $key: gamma ) solid;
+}
+
+footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+

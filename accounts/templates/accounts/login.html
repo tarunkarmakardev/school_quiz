@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% load widget_tweaks %} {% load static %} {% block content%}
+
+<section class="resgistration-form">
+  <div class="container bg-alpha-light pt-4 pb-4">
+
+    <h5 class="text-center">You'll need to register or sign in to use the site!</h5>
+
+    <div class="row justify-content-center">
+      <div class="col-8">
+
+        <form class="p-4" method="POST" novalidate>
+          {% csrf_token %}
+
+          <!-- Including messages -->
+          {% include 'accounts/includes/messages.html' %}
+
+          {% if form.non_field_errors %}
+
+          <!-- Non field errors -->
+          {% for error in form.non_field_errors %}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{error}}
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+          {% endfor %}
+
+          {% endif %}
+
+          <!-- Form fields -->
+          {% for field in form %}
+
+          <div class="mb-3">
+            {{field.label_tag}}
+            {{field|add_class:"form-control"}}
+          </div>
+
+          <!-- Field errors -->
+          {% for error in field.errors %}
+
+          <p class="field-error">{{error}}</p>
+
+          {% endfor %}
+
+          {% endfor %}
+          <button type="submit" class="btn btn-primary btn-alpha text-beta-light ">Submit</button>
+        </form>
+
+        <p class="p-4">Not registered? <a href="{% url 'accounts:registerUser' %}">Sign up</a> </p>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+{% endblock content %}
