@@ -15,7 +15,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
                 {% url 'core:index' as index %}
             <a class="nav-link {% if request.get_full_path == index %}active{% endif %}" href="{{index}}"
@@ -27,15 +27,17 @@
             <a class="nav-link {% if request.get_full_path == create_quiz %}active{% endif %} " href="{{create_quiz}}">School's corner</a>
             </li>
 
-            {% if user.is_authenticated %}
+        </ul>
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav ms-auto me-4 mb-2 mb-lg-0" >
 
-            <li class="nav-item ms-5">
+            <li class="nav-item">
                 <a class="nav-link" href="{% url 'accounts:logoutUser' %}">Logout</a>
             </li>
 
-            {% endif %}
-            
         </ul>
+        {% endif %}
+
         </div>
     </div>
     </nav>

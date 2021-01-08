@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% load static %} {% block content%}
+
+
+<section class="quiz-results">
+
+    <div class="container bg-alpha-light p-4">
+
+        <h2 class="text-center" >Hello, {{request.user.first_name}}</h2>
+
+        <h6 class="text-center mt-2" > Here are your results:</h6>
+
+        {% if result %}
+        <h6 class="text-center mt-2" > You have passed the Quiz</h6>
+
+        {% else %}
+
+        <h6 class="text-center mt-2" > You didn't qualify the Quiz</h6>
+
+        {% endif %}
+
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Question</th>
+                    <th scope="col">Correct Answer</th>
+                    <th scope="col">Your Answer</th>
+                    <th scope="col">Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in question_objects %}
+                <tr>
+                    <th scope="row" class="table-entry" ></th>
+                    <td>{{object.question}}</td>
+                    <td>{{object.correct_answer}}</td>
+                    <td>{{object.selected_answer}}</td>
+                    <td>{{object.marks}}</td>
+                </tr>
+               {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th scope="row"></th>
+                    <td>TOTAL MARKS: {{total_marks}} out of 10</td>
+                    <td class="time-taken" colspan="3" > Time Taken: Will Show!  </td>
+            
+                </tr>
+            </tfoot>
+        </table>
+
+
+
+    </div>
+
+
+
+</section>
+
+
+
+
+{% endblock content%}

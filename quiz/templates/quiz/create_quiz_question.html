@@ -12,6 +12,8 @@
                 <p class="border border-dark p-2">Note: Questions for the quiz would be automatically generated based on
                     the category you select
                     and students can view or attempt the quizzes from their dashboard </p>
+                
+                    {% include 'quiz/includes/messages.html' %}
 
                 <form action="" class="quiz-question-content" method="POST">
 
@@ -40,32 +42,28 @@
 
             </div>
 
-            <!-- <div class="col-10 p-4">
-
-                <form action="">
-
-                   {{form}}
-
-                </form>
-
-            </div> -->
 
 
         </div>
         <div class="quiz-cards">
             <div class="row justify-content-center">
-                <div class="col-sm-4">
+                <h2 class="text-center mb-4 ">Current Quizzes:</h2>
+                {% for quiz in quizzes %}
 
-                    <h2 class="text-center mb-4 ">Current Quizzes:</h2>
+                <div class="col-sm-4 mt-4">
+
+                    
 
                     <div class="card bg-beta text-alpha-light">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                            <h5 class="card-title">Quiz 2</h5>
+                            <h5 class="card-title">{{quiz.title}}</h5>
                             <p class="card-text"></p>
                         </div>
                     </div>
 
                 </div>
+
+                {% endfor %}
 
 
             </div>

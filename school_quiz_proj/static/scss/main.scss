@@ -58,7 +58,7 @@ $colors: (
         .correct-answer{
             display: inline-block;
             text-align: center;
-            width: 25%;
+            width: 80%;
             color: map-get($map: $colors, $key: gamma );
             padding: 0rem;
             border: 0.5px map-get($map: $colors, $key: gamma ) solid;

@@ -11,16 +11,16 @@
 
                 {% include 'quiz/includes/messages.html' %}
 
-                <h3><p>{{ques_num}}. {{question_object.question}}</p></h3>
+                <h3 class="ques-num" data-ques-num = "{{ques_num}}"  ><p>{{ques_num}}. {{question_object.question}}</p></h3>
 
-                <form action="" class="quiz-question-content" method="POST">
+                <form action="{% url 'quiz:display_quiz' quiz_title ques_num reveal_correct_answer allow_next_ques %}" id="quiz-question-form" class="quiz-question-content" method="POST">
 
                     {% csrf_token %}
 
                     {% for answer_choice in answer_choices %}
 
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="selected_answer" id="answer" value= "{{answer_choice}}">
+                        <input class="form-check-input quiz-question-option " type="radio" name="selected_answer" id="answer" value= "{{answer_choice}}">
                         <label class="form-check-label" for="answer">
                             {{answer_choice}} 
                         </label>
@@ -30,13 +30,18 @@
                     {% endfor %}
 
                     {% if not allow_next_ques %}
+
                     <button type="submit" id="submit_quiz" class="btn btn-primary btn-alpha text-beta-light">Submit</button>
+                    
                     {% endif %}
                 </form>
 
                 {% if allow_next_ques %}
-                <a href="{% url 'quiz:display_quiz' next %}" class="btn btn-primary btn-alpha text-beta-light me-4">Next question</a>
+                
+                <a href="{% url 'quiz:display_quiz' quiz_title next %}" id="next-question" class="btn btn-primary btn-alpha text-beta-light me-4">Next question</a>
+
                 {% endif %}
+
             </div>
 
 
