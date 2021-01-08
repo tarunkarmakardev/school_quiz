@@ -33,9 +33,9 @@ PROJECT_TEMPLATE_DIR = BASE_DIR/ 'templates'
 SECRET_KEY = 'tk1f1tj^sh+&kw-^#=b_tr(lnt4o_iusp9r*3ad5x#!+&ihvxz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['school-quiz-proj.herokuapp.com', '127.0.0.1']
 
 
 # Application definition

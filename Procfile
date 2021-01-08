@@ -1,0 +1,1 @@
+web: gunicorn school_quiz_proj.wsgi --log-file -
