@@ -19,3 +19,7 @@ media
 
 # Local History for Visual Studio Code
 .history/
+
+# Static
+
+static/
